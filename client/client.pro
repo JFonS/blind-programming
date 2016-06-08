@@ -1,14 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-05-11T11:54:59
+# Project created by QtCreator 2016-06-03T18:41:49
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = BlindProgramming
+TARGET = client
 TEMPLATE = app
 
 

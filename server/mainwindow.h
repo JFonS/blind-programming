@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QDebug>
-#include <QKeyEvent>
 #include <QProcess>
 
 namespace Ui {
@@ -20,7 +19,6 @@ public:
 
 private:
   Ui::MainWindow *ui;
-  void keyPressEvent(QKeyEvent * event);
   QProcess* editorProcess;
 };
 

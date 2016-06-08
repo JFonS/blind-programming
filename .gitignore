@@ -33,4 +33,5 @@ Makefile*
 *.qmlproject.user
 *.qmlproject.user.*
 
-BlindProgramming
+client/client
+server/server

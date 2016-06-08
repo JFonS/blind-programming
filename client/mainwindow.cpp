@@ -6,13 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
   ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
-  grabKeyboard();
-  editorProcess = new QProcess(this);
-  QString editorCmd = "konsole -name blindEditor1 -e ";
-  editorCmd += "vim";
-  //editorCmd += "nano";
-
-  editorProcess->start(editorCmd);
+  socket = new QTcpSocket(this);
+  socket->connectToHost(QHostAddress("127.0.0.1"), 1234,QIODevice::ReadWrite);
+  //while(socket->waitForConnected());
 
 }
 
@@ -21,20 +17,14 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
-
-
-void MainWindow::keyPressEvent(QKeyEvent *e){
-
+void MainWindow::keyPressEvent(QKeyEvent *e)
+{
   QString keyCode = QString("0x") + QString::number(e->nativeVirtualKey(),16);
-
   if (e->modifiers() == Qt::ControlModifier
       and e->nativeVirtualKey() != 0xffe3 and e->nativeVirtualKey() != 0xffe4) {
-      keyCode = QString("Control_L+")+keyCode;
+    keyCode = QString("Control_L+")+keyCode;
   }
 
-  QString cmd = QString("xdotool search --classname blindEditor1 key %1").arg(keyCode);
 
-  QProcess::execute(cmd);
-
+  socket->write(keyCode.toUtf8());
 }
-
