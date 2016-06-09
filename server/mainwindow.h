@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QProcess>
+#include <QDir>
 
 namespace Ui {
   class MainWindow;

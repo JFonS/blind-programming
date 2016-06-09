@@ -6,7 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
   ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
-  grabKeyboard();
+  QStringList items;
+  items << "TEST1" << "TEST2";
+  ui->comboBox->addItems(items);
 }
 
 MainWindow::~MainWindow()
